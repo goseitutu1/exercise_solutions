@@ -28,13 +28,9 @@ class OrderController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
-        return view('orders.index');
-//
-//        '<a class="btn btn-info" id="show-user" data-toggle="modal" data-id='.$row->id.'>Show</a>
-//<a class="btn btn-success" id="edit-user" data-toggle="modal" data-id='.$row->id.'>Edit </a>
-//<meta name="csrf-token" content="{{ csrf_token() }}">
-//<a id="delete-user" data-id='.$row->id.' class="btn btn-danger delete-user">Delete</a>';
-
+        $orders = Order::get();
+        return view('orders.index',[
+            'orders' => $orders,
+        ]);
     }
 }

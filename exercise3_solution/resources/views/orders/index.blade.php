@@ -148,7 +148,36 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </div>--}}
+    <form>
+        <div class="row" >
 
+            <div class="form-group col-md-4">
+{{--                <label for="inputEmail4">Select Order</label>--}}
+{{--                <input type="date" class="form-control" id="start_date"--}}
+{{--                       name="start_date">--}}
+
+                <label>Select OrderID <span style="color:red;">*</span></label>
+                <select class="form-control select2 main_form_income_account_id" name="order_id" id="order_id">
+                    @foreach($orders as $order)
+                        <option {{old('order_id') == $order['id'] ? 'selected' : 'tt'}} value="{{ $order['id'] }}">{{ $order['Id'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+{{--            <div class="form-group col-md-4">--}}
+{{--                <label for="inputEmail4">End Date </label>--}}
+{{--                <input type="date" class="form-control" id="end_date"--}}
+{{--                       name="end_date">--}}
+{{--            </div>--}}
+            <div class="form-group" style="    margin-top: 10px !important;
+" > <br>
+                <button id="btnGenerate" class="btn btn-primary">Generate</button>
+{{--                <a href="{{ route('user.sender-id.table') }}" class="btn  btn-warning"><i class="fa fa-refresh"></i> Refresh</a>--}}
+            </div>
+
+
+        </div>
+    </form>
     <table class="table table-bordered data-table" >
         <thead>
         <tr id="">
@@ -158,7 +187,7 @@
             <th width="30%">ShipCity</th>
             <th width="30%">ShipCountry</th>
             <th width="30%">ShipName</th>
-            <th width="20%">Action</th>
+{{--            <th width="20%">Action</th>--}}
         </tr>
         </thead>
         <tbody>
@@ -182,7 +211,7 @@
                 {data: 'ShipCity', name: 'ShipCity'},
                 {data: 'ShipCountry', name: 'ShipCountry'},
                 {data: 'ShipName', name: 'ShipName'},
-                {data: 'action', name: 'action', orderable: false, searchable: false},
+                // {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
 
