@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Npontu Technologies">
+    <meta name="description" content="Solution">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="shortcut icon" href="{{asset('storage/images/npontu_logo.jpeg')}}"/>
 
-    <title>{{ 'Npontu Technologies' }}</title>
+    <title>{{ 'Solution' }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -53,7 +53,7 @@
         <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img style="width:3rem;" src="{{asset('storage/images/npontu_logo.jpeg')}}" />
                 </div>
@@ -65,7 +65,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/dashboard">
+                <a class="nav-link" href="/>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -353,7 +353,7 @@
                         <a class="navbar-brand" href="{{ url('/') }}">
                             <img  src="https://npontu.com/UI/img/NpontuLogostroke.png" style="max-width:3rem; display:inline;" alt="" srcset="">
                             <strong>
-                                Activity App
+                                Order App
                             </strong>
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -369,9 +369,9 @@
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/login">{{ __('Login') }}</a>
-                                </li>
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="/login">{{ __('Login') }}</a>--}}
+{{--                                </li>--}}
                                 {{--   @if (Route::has('register'))
                                       <li class="nav-item">
                                           <a class="nav-link" href="/register">{{ __('Register') }}</a>
@@ -383,93 +383,14 @@
                 </nav>
 
             </div><br>
-
-{{--    @yield('content')--}}
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                    {{--             <li class="breadcrumb-item"><a href="/view-daily-activity">Activity</a></li> --}}
-                    <li class="breadcrumb-item active" aria-current="page">New Extension</li>
-                </ol>
-            </nav>
-
-            <div class="page-wrapper">
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-12 col-md-10 mb-4 col-lg-10">
-                    <div class="card border-left-success shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">New (Extension)</div>
-                                    {{--                            <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i></div>--}}
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-
-{{--                            @include('includes.errors')--}}
-
-{{--                            <form method="POST" action="{{route('new.extension')}}">--}}
-                            <form method="POST" action="">
-
-                                @csrf
-
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Service Name</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="service_name"  placeholder="Enter service name" value="{{ old('service_name') }}" >
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Service Number</label>
-                                    <div class="col-sm-8">
-                                        <input type="number" value="{{ old('service_number') }}" class="form-control"
-                                               placeholder="Enter service number" name="service_number">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Service Description</label>
-                                    <div class="col-sm-8">
-                                        <textarea name="service_description" class="form-control" placeholder="Enter service description">{{ old('service_description') }}</textarea>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Service Url</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="url"  placeholder="Enter URL" value="{{ old('url') }}" >
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <br>
-                                    <label class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
-                                        <button class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <script>
-            </script>
+    @yield('content')
 @endguest
 
 @stack('dash-script')
-{{--@include('table.data-script')--}}
+@include('table.data-script')
 @stack('t-script')
 @stack('myscript')
 
-{{--        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>--}}
-{{--        <script>--}}
-{{--            CKEDITOR.replace( 'article-ckeditor' );--}}
-{{--        </script>--}}
 
 </body>
 </html>
