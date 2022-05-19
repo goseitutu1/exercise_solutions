@@ -1,5 +1,6 @@
 # exercise_solutions
 solutions for the three exercises.
+Please take not that the master branch contains the solutions to the exercises
 Please take note that the file solution1.php contains the solution for exercise-01.php
 Please take not that the file solution2.php contailes the solution for exercise-02.php
 Please take note that the folder exercise3_solution contains the laravel project for exercise-03.
