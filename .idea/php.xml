@@ -113,6 +113,7 @@
       <path value="$PROJECT_DIR$/exercise3_solution/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/exercise3_solution/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/exercise3_solution/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/exercise3_solution/vendor/yajra/laravel-datatables-oracle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

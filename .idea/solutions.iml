@@ -119,6 +119,7 @@
       <excludeFolder url="file://$MODULE_DIR$/exercise3_solution/vendor/phpdocumentor/type-resolver" />
       <excludeFolder url="file://$MODULE_DIR$/exercise3_solution/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/exercise3_solution/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/exercise3_solution/vendor/yajra/laravel-datatables-oracle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
