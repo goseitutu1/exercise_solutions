@@ -15,14 +15,17 @@ class OrderController extends Controller
 
         $temp = $request->all();
 
-        if(!empty($temp['order_id'])){
+        if(empty($temp['order_id'])){
+
+            $data = OrderDetails::latest()->get();
+
+        }
+        elseif(!empty($temp['order_id'])){
 
             $ordeID = $temp['order_id'];
 
             $data = OrderDetails::query()->where('OrderId',$ordeID)->latest()->get();
 
-        }else{
-            $data = OrderDetails::latest()->get();
         }
 
         if ($request->ajax()) {
