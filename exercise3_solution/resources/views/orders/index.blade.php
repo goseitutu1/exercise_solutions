@@ -141,38 +141,22 @@
 <div class="container">
     <h1 align="center">All Orders</h1>
     <br/>
-{{--    <div class="row">--}}
-{{--        <div class="col-lg-12 margin-tb">--}}
-{{--            <div class="pull-right">--}}
-{{--                <a class="btn btn-success mb-2" id="new-user" data-toggle="modal">New User</a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
     <form>
         <div class="row" >
 
             <div class="form-group col-md-4">
-{{--                <label for="inputEmail4">Select Order</label>--}}
-{{--                <input type="date" class="form-control" id="start_date"--}}
-{{--                       name="start_date">--}}
-
                 <label>Select OrderID <span style="color:red;">*</span></label>
                 <select class="form-control select2 main_form_income_account_id" name="order_id" id="order_id">
-                    @foreach($orders as $order)
-                        <option {{old('order_id') == $order['id'] ? 'selected' : 'tt'}} value="{{ $order['id'] }}">{{ $order['Id'] }}</option>
+                    <option></option>
+                @foreach($orders as $order)
+                        <option {{old('order_id') == $order->Id ? 'selected' : ''}} value="{{ $order->Id }}">{{ $order->Id }}</option>
                     @endforeach
                 </select>
             </div>
-
-{{--            <div class="form-group col-md-4">--}}
-{{--                <label for="inputEmail4">End Date </label>--}}
-{{--                <input type="date" class="form-control" id="end_date"--}}
-{{--                       name="end_date">--}}
-{{--            </div>--}}
             <div class="form-group" style="    margin-top: 10px !important;
 " > <br>
                 <button id="btnGenerate" class="btn btn-primary">Generate</button>
-{{--                <a href="{{ route('user.sender-id.table') }}" class="btn  btn-warning"><i class="fa fa-refresh"></i> Refresh</a>--}}
+                <a href="{{ route('welcome.index') }}" class="btn  btn-warning"><i class="fa fa-refresh"></i> Refresh</a>
             </div>
 
 
@@ -181,12 +165,12 @@
     <table class="table table-bordered data-table" >
         <thead>
         <tr id="">
-            <th width="5%">CustomerId</th>
-            <th width="5%">OrderDate</th>
-            <th width="30%">ShipAddress</th>
-            <th width="30%">ShipCity</th>
-            <th width="30%">ShipCountry</th>
-            <th width="30%">ShipName</th>
+            <th width="5%">OrderId</th>
+            <th width="5%">ProductId</th>
+            <th width="30%">UnitPrice</th>
+            <th width="30%">Quantity</th>
+            <th width="30%">Discount</th>
+{{--            <th width="30%">ShipName</th>--}}
 {{--            <th width="20%">Action</th>--}}
         </tr>
         </thead>
@@ -205,76 +189,15 @@
             serverSide: true,
             ajax: "{{ route('welcome.index') }}",
             columns: [
-                {data: 'CustomerId', name: 'CustomerId'},
-                {data: 'OrderDate', name: 'OrderDate'},
-                {data: 'ShipAddress', name: 'ShipAddress'},
-                {data: 'ShipCity', name: 'ShipCity'},
-                {data: 'ShipCountry', name: 'ShipCountry'},
-                {data: 'ShipName', name: 'ShipName'},
+                {data: 'OrderId', name: 'OrderId'},
+                {data: 'ProductId', name: 'ProductId'},
+                {data: 'UnitPrice', name: 'UnitPrice'},
+                {data: 'Quantity', name: 'Quantity'},
+                {data: 'Discount', name: 'Discount'},
+                // {data: 'ShipName', name: 'ShipName'},
                 // {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });
-
-        /* When click New customer button */
-        $('#new-user').click(function () {
-            $('#btn-save').val("create-user");
-            $('#user').trigger("reset");
-            $('#userCrudModal').html("Add New User");
-            $('#crud-modal').modal('show');
-        });
-
-        /* Edit customer */
-        $('body').on('click', '#edit-user', function () {
-            var user_id = $(this).data('id');
-            $.get('users/'+user_id+'/edit', function (data) {
-                $('#userCrudModal').html("Edit User");
-                $('#btn-update').val("Update");
-                $('#btn-save').prop('disabled',false);
-                $('#crud-modal').modal('show');
-                $('#user_id').val(data.id);
-                $('#name').val(data.name);
-                $('#email').val(data.email);
-
-            })
-        });
-        /* Show customer */
-        $('body').on('click', '#show-user', function () {
-            var user_id = $(this).data('id');
-            $.get('users/'+user_id, function (data) {
-
-                $('#sname').html(data.name);
-                $('#semail').html(data.email);
-
-            })
-            $('#userCrudModal-show').html("User Details");
-            $('#crud-modal-show').modal('show');
-        });
-
-        /* Delete customer */
-        $('body').on('click', '#delete-user', function () {
-            var user_id = $(this).data("id");
-            var token = $("meta[name='csrf-token']").attr("content");
-            confirm("Are You sure want to delete !");
-
-            $.ajax({
-                type: "DELETE",
-                url: "http://localhost/laravelpro/public/users/"+user_id,
-                data: {
-                    "id": user_id,
-                    "_token": token,
-                },
-                success: function (data) {
-
-//$('#msg').html('Customer entry deleted successfully');
-//$("#customer_id_" + user_id).remove();
-                    table.ajax.reload();
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                }
-            });
-        });
-
     });
 
 </script>

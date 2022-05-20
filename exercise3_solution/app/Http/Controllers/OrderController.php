@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DataTables\OrdersDataTable;
 use App\Models\Order;
+use App\Models\OrderDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -12,9 +13,20 @@ class OrderController extends Controller
 {
     public function index(Request $request){
 
+        $temp = $request->all();
+
+        if(!empty($temp['order_id'])){
+
+            $ordeID = $temp['order_id'];
+
+            $data = OrderDetails::query()->where('OrderId',$ordeID)->latest()->get();
+
+        }else{
+            $data = OrderDetails::latest()->get();
+        }
+
         if ($request->ajax()) {
 
-            $data = Order::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
@@ -28,6 +40,7 @@ class OrderController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
+
         $orders = Order::get();
         return view('orders.index',[
             'orders' => $orders,
