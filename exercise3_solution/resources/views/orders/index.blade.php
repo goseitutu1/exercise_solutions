@@ -139,7 +139,7 @@
 <body>
 
 <div class="container">
-    <h1 align="center">All Orders</h1>
+    <h1 align="center">All Order Details</h1>
     <br/>
     <form>
         <div class="row" >
@@ -181,6 +181,8 @@
 </body>
 
 <script type="text/javascript">
+
+
 
     $(document).ready(function () {
 
