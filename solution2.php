@@ -24,7 +24,17 @@ function get_orders()
     return json_encode($result,JSON_PRETTY_PRINT, 30);
 }
 
+function get_order_with_details($id)
+{
+    global $db;
+    $orders_query = $db->prepare("SELECT o.*,ord.* FROM `Order` o join `OrderDetail` ord on o.Id=ord.OrderId WHERE o.Id='$id'");
+    $orders_query->execute();
+    $result = $orders_query->fetchAll();
+
+    return json_encode($result,JSON_PRETTY_PRINT, 30);
+}
+
 //echo get_orders(32); this method do not accept any parameter
 //echo get_orders(); this is how you call the get_orders() method.
 
-echo get_order(10248);
+echo get_order_with_details(10248);
